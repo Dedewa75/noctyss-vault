@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Noctyss.Vault — Compte</title>
+<style>
+:root{--bg:#0B0B0B;--line:#24262c;--gray:#8b8e96;--text:#ECECEE;--red:#FF073A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:system-ui,"Segoe UI",sans-serif;min-height:100vh;display:grid;place-items:center;padding:24px}
+.card{max-width:520px;width:100%;border:1px solid var(--line);border-radius:22px;padding:34px;background:radial-gradient(circle at 50% 0,#ff073a1f,transparent 60%),#0f1013}
+.logo{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#1a1b1f;color:var(--red);font-weight:800;font-size:20px;box-shadow:0 0 14px #ff073a88;margin-bottom:20px}
+.over{color:var(--red);font-size:11px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:8px}
+h1{font-family:Georgia,serif;font-size:30px;margin-bottom:14px}
+p{color:#b9bbc2;line-height:1.6;margin-bottom:12px}
+.code{font-family:Consolas,monospace;font-size:20px;word-break:break-all;background:#ff073a1a;border:1px solid var(--red);border-radius:12px;padding:14px;margin:16px 0;color:#fff;text-align:center;letter-spacing:.05em}
+button{background:var(--red);color:#fff;border:none;border-radius:999px;padding:12px 24px;font-size:15px;cursor:pointer}
+.warn{font-size:13px;color:var(--gray)}
+</style>
+</head>
+<body>
+<div class="card" id="card">
+  <div class="logo">N</div>
+  <div class="over">Compte</div>
+  <h1>Un instant…</h1>
+</div>
+<script>
+// Les informations arrivent apres le # de l'adresse : elles ne sont jamais envoyees a ce site.
+const h = new URLSearchParams(location.hash.slice(1));
+const q = new URLSearchParams(location.search);
+history.replaceState(null, "", location.pathname);   // on efface tout de la barre d'adresse
+const card = document.getElementById("card");
+const type = h.get("type") || q.get("type");
+const err = h.get("error_description") || q.get("error_description");
+function show(over, title, html){
+  card.innerHTML = '<div class="logo">N</div><div class="over">'+over+'</div><h1>'+title+'</h1>'+html;
+}
+if (err) {
+  show("Erreur", "Lien expiré", "<p>Ce lien n'est plus valable (il ne marche qu'une fois et pendant une durée limitée).</p><p>Retourne dans l'application et redemande un e-mail.</p>");
+} else if (type === "recovery" && h.get("refresh_token")) {
+  const code = h.get("refresh_token");
+  show("Mot de passe oublié", "Ton code de réinitialisation",
+    "<p>Copie ce code et colle-le dans l'application, avec ton <b>code de récupération</b> et ton nouveau mot de passe.</p>"+
+    '<div class="code" id="c"></div><button id="b">Copier le code</button>'+
+    '<p class="warn" style="margin-top:16px">Ne le partage avec personne. Il ne sert qu\'une fois.<br>Ce code seul ne permet pas d\'ouvrir ton coffre : il faut aussi ton code de récupération.</p>');
+  document.getElementById("c").textContent = code;
+  document.getElementById("b").onclick = async () => {
+    try { await navigator.clipboard.writeText(code); document.getElementById("b").textContent = "Copié ✓"; }
+    catch (e) { document.getElementById("b").textContent = "Sélectionne le code et copie-le"; }
+  };
+} else if (type === "signup" || type === "email" || type === "magiclink" || h.get("access_token")) {
+  show("Compte", "Adresse confirmée ✓", "<p>Ton compte est activé.</p><p>Retourne dans l'application <b>Calculatrice</b> (sur ton PC ou ton téléphone) et connecte-toi avec ton e-mail et ton mot de passe.</p><p class=\"warn\">Tu peux fermer cette page.</p>");
+} else {
+  show("Compte", "Noctyss.Vault", "<p>Cette page sert à confirmer ton adresse e-mail et à réinitialiser ton mot de passe. Ouvre-la depuis le lien reçu par e-mail.</p><p><a href=\"/\" style=\"color:#FF073A\">← Retour au site</a></p>");
+}
+</script>
+</body>
+</html>
