@@ -146,7 +146,7 @@ footer{padding:40px 6vw;border-top:1px solid var(--line);display:flex;justify-co
 
 <header class="hero">
   <div>
-    <div class="over">Coffre privé · Windows</div>
+    <div class="over">Coffre privé · Windows &amp; Android</div>
     <h1>PROTÉGÉ<br><span class="r">autrement.</span></h1>
     <p class="lead">Une vraie calculatrice. Derrière elle, un coffre chiffré pour tes photos et tes vidéos. Tout reste sur ton ordinateur.</p>
     <div class="cta">
@@ -190,7 +190,7 @@ footer{padding:40px 6vw;border-top:1px solid var(--line);display:flex;justify-co
     <div class="card reveal"><div class="ic">PC</div><h3>Lié à ton Windows</h3><p>Le coffre est lié à ton compte Windows : copié sur un autre PC, le PIN seul ne l'ouvre pas.</p></div>
     <div class="card reveal"><div class="ic">USR</div><h3>Plusieurs profils</h3><p>Chaque utilisateur a son propre coffre, ses propres clés. Impossible de voir le coffre d'un autre.</p></div>
     <div class="card reveal"><div class="ic">0s</div><h3>Verrouillage auto</h3><p>Après une minute sans activité ou dès que la fenêtre est réduite, les clés sont effacées de la mémoire.</p></div>
-    <div class="card reveal"><div class="ic">☁</div><h3>Un compte, tous tes appareils</h3><p>Le même compte sur ton PC et (bientôt) ton téléphone. Tout est chiffré sur ton appareil avant d'être envoyé : le serveur ne voit jamais tes fichiers ni ton mot de passe.</p></div>
+    <div class="card reveal"><div class="ic">☁</div><h3>Un compte, tous tes appareils</h3><p>Le même compte sur ton PC Windows et ton téléphone Android. Tout est chiffré sur ton appareil avant d'être envoyé : le serveur ne voit jamais tes fichiers ni ton mot de passe.</p></div>
   </div>
 </section>
 
@@ -217,11 +217,15 @@ footer{padding:40px 6vw;border-top:1px solid var(--line);display:flex;justify-co
   <div class="box reveal">
     <span class="logo" style="margin:0 auto 22px;width:58px;height:58px;font-size:24px">N</span>
     <p style="font-size:20px;margin-bottom:24px">Noctyss.Vault pour Windows</p>
-    <a class="btn solid" href="Calculatrice.exe" download>Télécharger Calculatrice.exe →</a>
-    <div class="meta"><span>WINDOWS 10 / 11</span><span>64 BITS</span><span>49 MO</span><span>GRATUIT</span></div>
-    <p class="note">Windows peut afficher « Windows a protégé votre ordinateur » : le programme n'est pas encore signé.
-      Clique sur <b>Informations complémentaires</b> puis <b>Exécuter quand même</b>.</p>
-    <p class="note" style="font-family:'JetBrains Mono',monospace;font-size:11px;word-break:break-all">SHA-256 : d8e6b07d845e83f5f1a14753b3db1e4d9a37cb2c0fd563320e95ff640c321334</p>
+    <div class="cta" style="justify-content:center">
+      <a class="btn solid" href="Calculatrice.exe" download>⊞  Windows · Calculatrice.exe</a>
+      <a class="btn solid" href="Calculatrice.apk" download>▶  Android · Calculatrice.apk</a>
+    </div>
+    <div class="meta"><span>WINDOWS 10 / 11 · 49 MO</span><span>ANDROID 8+ · 3 MO</span><span>GRATUIT</span></div>
+    <p class="note"><b>Windows</b> : si « Windows a protégé votre ordinateur » s'affiche, clique sur <b>Informations complémentaires</b> puis <b>Exécuter quand même</b> (l'appli n'est pas encore signée).</p>
+    <p class="note"><b>Android</b> : ouvre le fichier téléchargé, puis autorise l'installation depuis ton navigateur quand Android le demande (« Paramètres » → « Autoriser cette source »).</p>
+    <p class="note">Le <b>même compte</b> marche sur les deux : crée-le sur l'un, connecte-toi sur l'autre.</p>
+    <p class="note" style="font-family:'JetBrains Mono',monospace;font-size:11px;word-break:break-all">SHA-256 .exe : d8e6b07d845e83f5f1a14753b3db1e4d9a37cb2c0fd563320e95ff640c321334<br>SHA-256 .apk : e1125daf26658594f3024ca27b608503f4c7d6f704b1784b47cd991c64f29f44</p>
   </div>
 </section>
 
@@ -230,7 +234,7 @@ footer{padding:40px 6vw;border-top:1px solid var(--line);display:flex;justify-co
   <details><summary>Mes fichiers sont-ils envoyés sur internet ?</summary><p>Seulement chiffrés, pour les retrouver sur tes autres appareils. Le chiffrement se fait sur ton appareil avec ton mot de passe : le serveur ne reçoit que des données illisibles et ne connaît jamais ton mot de passe. Sans internet, le coffre s'ouvre quand même (copie locale).</p></details>
   <details><summary>J'ai oublié mon mot de passe, je fais comment ?</summary><p>« Mot de passe oublié ? » dans l'application : tu reçois un e-mail, puis tu entres ton code de récupération de 24 caractères (affiché à la création du compte). L'e-mail seul ne suffit jamais à ouvrir le coffre.</p></details>
   <details><summary>Je change d'ordinateur ?</summary><p>Installe l'application sur le nouveau PC et connecte-toi avec ton e-mail et ton mot de passe : ton coffre se télécharge automatiquement.</p></details>
-  <details><summary>Ça existe sur Android ?</summary><p>Pas encore. La version Windows arrive d'abord ; Android est prévu ensuite.</p></details>
+  <details><summary>Ça existe sur Android ?</summary><p>Oui : télécharge Calculatrice.apk ci-dessus. Connecte-toi avec le même compte que sur ton PC pour retrouver ton coffre. Sur le téléphone, le coffre se verrouille dès que l'appli passe en arrière-plan et les captures d'écran sont bloquées.</p></details>
 </section>
 
 <footer><span>© 2026 Noctyss.Vault</span><span>Fait en Belgique · Chiffrement AES-256-GCM / Argon2id</span></footer>
